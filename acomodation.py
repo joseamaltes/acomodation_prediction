@@ -24,9 +24,12 @@ st.subheader('Training dataset')
 st.write(test_data)
 
 #Model training
+
+
 encoder_genero = label_encoder.fit_transform(test_data['genero'])
-encoder_codigo_destino = label_encoder.fit_transform(test_data['codigo_destino'])
-columns = ['duracion_estadia', 'genero', 'edad', 'ninos', 'codigo_destino']
+#encoder_codigo_destino = label_encoder.fit_transform(test_data['codigo_destino'])
+#columns = ['duracion_estadia', 'genero', 'edad', 'ninos', 'codigo_destino']
+columns = ['duracion_estadia', 'genero', 'edad', 'ninos']
 train_predictors = test_data[columns]
 dummy_encoded_train_predictors = pd.get_dummies(train_predictors)
 y = test_data['tipo_acomodacion']
@@ -50,7 +53,8 @@ col2.metric(label='Using logistic regression', value = 55)
 
 
 prediction_df = pd.read_csv('data/DataAcomodacion.csv')
-columns_predictions = ['duracion_estadia', 'genero', 'edad', 'ninos', 'codigo_destino']
+#columns_predictions = ['duracion_estadia', 'genero', 'edad', 'ninos', 'codigo_destino']
+columns_predictions = ['duracion_estadia', 'genero', 'edad', 'ninos']
 codigos_destino = ['US', 'ES', 'UK', 'AR', 'PE', 'NL','COL', 'IT']
 ninos = [1,0]
 average_age = prediction_df['edad'].mean()
@@ -60,7 +64,7 @@ prediction_df['ninos'].fillna(np.random.choice(ninos), inplace = True)
 prediction_df['codigo_destino'].fillna(np.random.choice(codigos_destino), inplace = True)
 predicted_df = prediction_df[columns_predictions]
 encoder_gennder_predictions = label_encoder.fit_transform(predicted_df['genero'])
-encoder_codigo_destino_predictions = label_encoder.fit_transform(predicted_df['codigo_destino'])
+#encoder_codigo_destino_predictions = label_encoder.fit_transform(predicted_df['codigo_destino'])
 dummy_encoded_predictions = pd.get_dummies(predicted_df)
 y_prediction = tree_one.predict(dummy_encoded_predictions)
 new_df = prediction_df
