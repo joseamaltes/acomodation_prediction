@@ -1,12 +1,11 @@
 import pandas as pd 
 import math
-import seaborn as sns 
 import numpy as np
 from sklearn import tree
 from sklearn.model_selection import train_test_split 
 import streamlit as st
 from sklearn import preprocessing
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import  confusion_matrix
 label_encoder = preprocessing.LabelEncoder()
 
 
