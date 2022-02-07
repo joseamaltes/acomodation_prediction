@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 import streamlit as st
 from sklearn import preprocessing
 from sklearn.metrics import  confusion_matrix
+
+
 label_encoder = preprocessing.LabelEncoder()
 
 
